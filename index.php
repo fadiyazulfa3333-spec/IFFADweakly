@@ -11,11 +11,11 @@
     <table border="1" cellspacing="0" cellpadding"10px">
         <tr>
             <td>
-                <a href="index.html">Home</a>
+                <a href="index.php">Home</a>
             </td>
-            <td><a href="profile.html">Profile</a></td>
-            <td><a href="Contact.html">Contact</a></td>
-            <td><a href="Data Mahasiswa.html">data Mahasiswa</a></td>
+            <td><a href="profile.php">Profile</a></td>
+            <td><a href="Contact.php">Contact</a></td>
+            <td><a href="Data Mahasiswa.php">data Mahasiswa</a></td>
         </tr>
     </table>
     <h2>Sambutan Kaprodi</h2>

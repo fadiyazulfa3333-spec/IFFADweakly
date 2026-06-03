@@ -1,3 +1,24 @@
+<?php
+
+    mysql_connect("localhost", "root", "iffadweakly");
+
+    $query = "SELECT * FROM mahasiswa";
+
+    $result = mysqli_query($koneksi, $query);
+    
+    /// ambil data (fetch) mahasiswa dari lemari result
+
+    /// mysqli_fetch_row
+    /// mysqli_fetch_assoc
+    /// mysqli_fetch_object
+    /// mysqli_fetch_array
+
+    while ($mhs = mysqli_fetch_row($result))
+
+    var_dump($mhs);
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,22 +32,22 @@
     <table border="1" cellspacing="" cellpading=""> 
         <tr>
             <td>
-            <a href="index.html">Home</a>
+            <a href="index.php">Home</a>
             </td>
             <td>
-                <a href="Profil.Html">Profile</a>
+                <a href="Profil.php">Profile</a>
             </td>
             <td>
-            <a href="Kontak.html">Kontak</a>
+            <a href="Kontak.php">Kontak</a>
         </td>
             <td>
-                <a href="Mahasiswa.Html">Data Mahasiswa</a>
+                <a href="Mahasiswa.php">Data Mahasiswa</a>
             </td>
             </td>
         </tr>
     </table>
     <h2>Data Mahasiswa</h2>
-    <a href="Inputdata.html">
+    <a href="Inputdata.php">
         <button>Tambah Data Mahasiswa</button>
     </a> 
         <TABLE border="1" cellpadding="5px">
