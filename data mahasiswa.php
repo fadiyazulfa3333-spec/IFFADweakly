@@ -1,21 +1,18 @@
 <?php
 
-    mysql_connect("localhost", "root", "iffadweakly");
+$koneksi = mysqli_connect(
+    "localhost",
+    "root",
+    "",
+    "iffadweakly"
+);
 
-    $query = "SELECT * FROM mahasiswa";
+if (!$koneksi) {
+    die("Koneksi database gagal!");
+}
 
-    $result = mysqli_query($koneksi, $query);
-    
-    /// ambil data (fetch) mahasiswa dari lemari result
-
-    /// mysqli_fetch_row
-    /// mysqli_fetch_assoc
-    /// mysqli_fetch_object
-    /// mysqli_fetch_array
-
-    while ($mhs = mysqli_fetch_row($result))
-
-    var_dump($mhs);
+$query = "SELECT * FROM mahasiswa";
+$result = mysqli_query($koneksi, $query);
 
 ?>
 
@@ -25,80 +22,168 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Data Mahasiswa</title>
+
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:Arial, Helvetica, sans-serif;
+        }
+
+        body{
+            background:#f4f6f9;
+        }
+
+        .header{
+            background:#2563eb;
+            color:white;
+            text-align:center;
+            padding:25px;
+        }
+
+        .navbar{
+            background:white;
+            display:flex;
+            justify-content:center;
+            gap:30px;
+            padding:15px;
+            box-shadow:0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .navbar a{
+            text-decoration:none;
+            color:black;
+            font-weight:bold;
+        }
+
+        .navbar a:hover{
+            color:#2563eb;
+        }
+
+        .container{
+            width:90%;
+            margin:40px auto;
+            background:white;
+            padding:30px;
+            border-radius:15px;
+            box-shadow:0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        h2{
+            text-align:center;
+            color:#2563eb;
+            margin-bottom:20px;
+        }
+
+        .btn{
+            display:inline-block;
+            background:#2563eb;
+            color:white;
+            text-decoration:none;
+            padding:10px 15px;
+            border-radius:8px;
+            margin-bottom:20px;
+        }
+
+        .btn:hover{
+            background:#1d4ed8;
+        }
+
+        table{
+            width:100%;
+            border-collapse:collapse;
+        }
+
+        table th{
+            background:#2563eb;
+            color:white;
+        }
+
+        table th,
+        table td{
+            border:1px solid #ddd;
+            padding:10px;
+            text-align:center;
+        }
+
+        img{
+            border-radius:8px;
+        }
+
+        .footer{
+            margin-top:30px;
+            background:#2563eb;
+            color:white;
+            text-align:center;
+            padding:15px;
+        }
+
+    </style>
+
 </head>
 <body>
-     <H1>Data Mahasiswa</H1>
-    <hr/>
-    <table border="1" cellspacing="" cellpading=""> 
+
+<div class="header">
+    <h1>DATA MAHASISWA</h1>
+</div>
+
+<div class="navbar">
+    <a href="index.php">Home</a>
+    <a href="profile.php">Profile</a>
+    <a href="Contact.php">Contact</a>
+    <a href="data mahasiswa.php">Data Mahasiswa</a>
+</div>
+
+<div class="container">
+
+    <h2>Daftar Mahasiswa</h2>
+
+    <a href="inputdata.php" class="btn">
+        + Tambah Data Mahasiswa
+    </a>
+
+    <table>
+
         <tr>
+            <th>No</th>
+            <th>Nama</th>
+            <th>NIM</th>
+            <th>Jurusan</th>
+            <th>Email</th>
+            <th>No HP</th>
+            <th>Foto</th>
+        </tr>
+
+        <?php
+        $no = 1;
+
+        while($mhs = mysqli_fetch_assoc($result)){
+        ?>
+
+        <tr>
+            <td><?php echo $no++; ?></td>
+            <td><?php echo $mhs['nama']; ?></td>
+            <td><?php echo $mhs['nim']; ?></td>
+            <td><?php echo $mhs['jurusan']; ?></td>
+            <td><?php echo $mhs['email']; ?></td>
+            <td><?php echo $mhs['no_hp']; ?></td>
             <td>
-            <a href="index.php">Home</a>
-            </td>
-            <td>
-                <a href="Profil.php">Profile</a>
-            </td>
-            <td>
-            <a href="Kontak.php">Kontak</a>
-        </td>
-            <td>
-                <a href="Mahasiswa.php">Data Mahasiswa</a>
-            </td>
+                <img src="assets/images/<?php echo $mhs['foto']; ?>" width="90">
             </td>
         </tr>
+
+        <?php
+        }
+        ?>
+
     </table>
-    <h2>Data Mahasiswa</h2>
-    <a href="Inputdata.php">
-        <button>Tambah Data Mahasiswa</button>
-    </a> 
-        <TABLE border="1" cellpadding="5px">
-            <tr>
-                <th rowspan="2" align="center">No</th>
-                <th rowspan="2" align="center">Nama</th>
-                <th rowspan="2" align="center">NIM</th>
-                <th rowspan="2" align="center">Foto</th>
-                <th colspan="3" align="center">Nilai</th>
-            </tr>
-            <tr>
-                <td align="center">UTS</td>
-                 <td align="center">UAS</td>
-                  <td align="center">TUGAS</td>
-            </tr>
-            <tr>
-                <td align="center">1</td>
-                <td>Haikal</td>
-                <td>13182420024</td>
-                <td><img src="assets/images/Haechan.jpg" width="90" height="150"></td>
-                <td>85</td>
-                <td>88</td>
-                <td>100</td>
-            </tr>
-        <tr>
-        </table>
-               </TABLE>
-        <hr>
-        <h3>Latihan</h3>
-        <table border="1" cellpading="0" cellpadding="10px">
-            <tr>
-                <td>1,1</td>
-                <td>1,2</td>
-                <td>1,3</td>
-                <td>1,4</td>
-            </tr>
-            <tr>
-                <td>2,1</td>
-                <td colspan="2" rowspan="2" align="center">?</td>
-                <td>2,4</td>
-            <tr>
-                <td>3,1</td>
-                <td>3,4</td>
-            </tr>    
-                <tr>
-                <td>4,1</td>
-                <td>4,2</td>
-                <td>4,3</td>
-                <td>4,4</td>
-            </tr>
-            </tr>
-        </table>
+
+</div>
+
+<div class="footer">
+    © <?php echo date("Y"); ?> Program Studi Informatika
+</div>
+
 </body>
 </html>
