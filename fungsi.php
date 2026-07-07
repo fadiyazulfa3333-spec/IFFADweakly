@@ -40,6 +40,36 @@ function tambahdata($data)
     }
     return mysqli_affected_rows($koneksi);
 }
+function editdata($data)
+{
+    global $koneksi;
+
+    $id       = $data['id'];
+    $nama     = htmlspecialchars($data['nama']);
+    $nim      = htmlspecialchars($data['nim']);
+    $jurusan  = htmlspecialchars($data['jurusan']);
+    $email    = htmlspecialchars($data['email']);
+    $nohp     = htmlspecialchars($data['nohp']);
+
+    if($_FILES['foto']['error'] === 4){
+        $foto = $data['fotoLama'];
+    }else{
+        $foto = upload();
+    }
+
+    $query = "UPDATE mahasiswa SET
+                nama='$nama',
+                nim='$nim',
+                jurusan='$jurusan',
+                email='$email',
+                no_hp='$nohp',
+                foto='$foto'
+              WHERE id=$id";
+
+    mysqli_query($koneksi,$query);
+
+    return mysqli_affected_rows($koneksi);
+}
 function deletedata($id)
 {
     global $koneksi;

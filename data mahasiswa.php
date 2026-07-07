@@ -119,6 +119,31 @@
         .btn-hapus:hover{
             background:#b02a37;
         }
+
+        .btn-edit{
+            background:#198754;
+            color:white;
+            padding:8px 12px;
+            border-radius:5px;
+            text-decoration:none;
+            margin-right:5px;
+        }
+
+        .btn-edit:hover{
+            background:#146c43;
+        }
+
+        .btn-hapus{
+            background:#dc3545;
+            color:white;
+            padding:8px 12px;
+            border-radius:5px;
+            text-decoration:none;
+        }
+
+        .btn-hapus:hover{
+            background:#b02a37;
+        }
     </style>
 
 </head>
@@ -165,6 +190,8 @@
             </td>
 
             <td>
+                 <a class="btn-edit" href="editdata.php?id=<?php echo $mhs[0]; ?>">Edit</a>
+
                 <a class="btn-hapus"
                 href="hapusdata.php?id=<?php echo $mhs[0]; ?>"
                 onclick="return confirm('Yakin ingin menghapus data ini?')">
