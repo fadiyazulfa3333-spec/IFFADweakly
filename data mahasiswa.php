@@ -1,19 +1,7 @@
 <?php
-
-$koneksi = mysqli_connect(
-    "localhost",
-    "root",
-    "",
-    "iffadweakly"
-);
-
-if (!$koneksi) {
-    die("Koneksi database gagal!");
-}
-
-$query = "SELECT * FROM mahasiswa";
-$result = mysqli_query($koneksi, $query);
-
+    require "fungsi.php";
+    $qmahasiswa = "SELECT * FROM mahasiswa";/// karena query ke tabel mahasiswa
+    $mahasiswas = tampildata($qmahasiswa); /// menghasilkan data mahasiswa dalam lemari
 ?>
 
 <!DOCTYPE html>
@@ -119,32 +107,37 @@ $result = mysqli_query($koneksi, $query);
             padding:15px;
         }
 
+            .btn-hapus{
+        background:#dc3545;
+        color:white;
+        padding:8px 12px;
+        border-radius:5px;
+        text-decoration:none;
+        font-size:14px;
+        }
+
+        .btn-hapus:hover{
+            background:#b02a37;
+        }
     </style>
 
 </head>
 <body>
-
 <div class="header">
     <h1>DATA MAHASISWA</h1>
 </div>
-
 <div class="navbar">
     <a href="index.php">Home</a>
     <a href="profile.php">Profile</a>
     <a href="Contact.php">Contact</a>
     <a href="data mahasiswa.php">Data Mahasiswa</a>
 </div>
-
 <div class="container">
-
     <h2>Daftar Mahasiswa</h2>
-
     <a href="inputdata.php" class="btn">
         + Tambah Data Mahasiswa
     </a>
-
     <table>
-
         <tr>
             <th>No</th>
             <th>Nama</th>
@@ -153,37 +146,40 @@ $result = mysqli_query($koneksi, $query);
             <th>Email</th>
             <th>No HP</th>
             <th>Foto</th>
+            <th>Aksi</th>
         </tr>
-
         <?php
         $no = 1;
-
-        while($mhs = mysqli_fetch_assoc($result)){
+        foreach ($mahasiswas as $mhs)
+            {
         ?>
-
         <tr>
             <td><?php echo $no++; ?></td>
-            <td><?php echo $mhs['nama']; ?></td>
-            <td><?php echo $mhs['nim']; ?></td>
-            <td><?php echo $mhs['jurusan']; ?></td>
-            <td><?php echo $mhs['email']; ?></td>
-            <td><?php echo $mhs['no_hp']; ?></td>
+            <td><?php echo $mhs[1] ?></td>
+            <td><?php echo $mhs[2] ?></td>
+            <td><?php echo $mhs[3] ?></td>
+            <td><?php echo $mhs[4] ?></td>
+            <td><?php echo $mhs[5] ?></td>
             <td>
-                <img src="assets/images/<?php echo $mhs['foto']; ?>" width="90">
+                <img src="assets/images/<?php echo $mhs[6] ?>" width="90">
+            </td>
+
+            <td>
+                <a class="btn-hapus"
+                href="hapusdata.php?id=<?php echo $mhs[0]; ?>"
+                onclick="return confirm('Yakin ingin menghapus data ini?')">
+                    Hapus
+                </a>
             </td>
         </tr>
-
         <?php
-        }
+        $no++;
+            }
         ?>
-
     </table>
-
 </div>
-
 <div class="footer">
     © <?php echo date("Y"); ?> Program Studi Informatika
 </div>
-
 </body>
 </html>

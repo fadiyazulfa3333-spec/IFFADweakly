@@ -128,7 +128,12 @@ $menu = [
 
         <tr>
             <td>Email</td>
-            <td>fadiyazulfa3333@email.com</td>
+            <td>fadiyazulfa3333@gmail.com</td>
+        </tr>
+
+         <tr>
+            <td>No HP</td>
+            <td>0858-0943-9882</td>
         </tr>
 
         <tr>
@@ -138,7 +143,7 @@ $menu = [
 
         <tr>
             <td>Alamat</td>
-            <td>Semarang, Jawa Tengah</td>
+            <td>Semarang</td>
         </tr>
     </table>
 

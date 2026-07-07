@@ -148,7 +148,7 @@ $menu = [
 
         <tr>
             <td>Hobi</td>
-            <td>Membaca dan Coding</td>
+            <td>Rebahan</td>
         </tr>
     </table>
 

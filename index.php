@@ -104,7 +104,7 @@
 
     <h2>Selamat Datang</h2>
 
-    <img src="assets/images/fadiyah formal.jpeg" alt="Foto">
+    <img src="assets/images/fadiyah.jpeg" alt="Foto">
 
     <p>
         Selamat datang di Website milik Fadiyah Zulfa dari Program Studi Informatika.
