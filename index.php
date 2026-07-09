@@ -82,7 +82,6 @@
             text-align:center;
             padding:15px;
         }
-
     </style>
 </head>
 <body>
@@ -99,22 +98,16 @@
         }
     ?>
 </div>
-
 <div class="container">
-
     <h2>Selamat Datang</h2>
-
     <img src="assets/images/fadiyah.jpeg" alt="Foto">
-
     <p>
         Selamat datang di Website milik Fadiyah Zulfa dari Program Studi Informatika.
         <br><br>
         Website ini dibuat untuk memenuhi tugas praktikum
         Pemrograman Web.
     </p>
-
     <br>
-
     <h3>Daftar Publikasi</h3>
 
     <ul style="display:inline-block; text-align:left;">
@@ -126,12 +119,9 @@
         <li>SINTA</li>
         <li>Web of Science (WoS)</li>
     </ul>
-
 </div>
-
 <div class="footer">
     © <?php echo date("Y"); ?> Program Studi Informatika
 </div>
-
 </body>
 </html>

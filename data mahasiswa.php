@@ -1,4 +1,11 @@
 <?php
+    session_start();
+
+    if(!isset($_SESSION["login"])){
+        header("Location: login.php");
+        exit;
+    }
+    
     require "fungsi.php";
     $qmahasiswa = "SELECT * FROM mahasiswa";/// karena query ke tabel mahasiswa
     $mahasiswas = tampildata($qmahasiswa); /// menghasilkan data mahasiswa dalam lemari
@@ -156,6 +163,7 @@
     <a href="profile.php">Profile</a>
     <a href="Contact.php">Contact</a>
     <a href="data mahasiswa.php">Data Mahasiswa</a>
+    <a href="logout.php" onclick="return confirm('Yakin ingin logout?')">Logout</a>
 </div>
 <div class="container">
     <h2>Daftar Mahasiswa</h2>
