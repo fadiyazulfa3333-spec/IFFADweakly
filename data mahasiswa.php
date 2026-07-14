@@ -5,7 +5,7 @@
         header("Location: login.php");
         exit;
     }
-    
+
     require "fungsi.php";
     $qmahasiswa = "SELECT * FROM mahasiswa";/// karena query ke tabel mahasiswa
     $mahasiswas = tampildata($qmahasiswa); /// menghasilkan data mahasiswa dalam lemari

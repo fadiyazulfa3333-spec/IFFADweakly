@@ -13,19 +13,17 @@ if(isset($_POST["login"])){
 
         $row = mysqli_fetch_assoc($result);
 
-        if(password_verify($password,$row["password"])){
+        if(password_verify($password, $row["password"])){
 
-            $_SESSION["login"]=true;
+    // SESSION LOGIN
+    $_SESSION["login"] = true;
+    $_SESSION["username"] = $row["username"];
 
-            header("Location:data mahasiswa.php");
-            exit;
-
-        }
-
+    header("Location: data mahasiswa.php");
+    exit;
+}
     }
-
     $error=true;
-
 }
 ?>
 
